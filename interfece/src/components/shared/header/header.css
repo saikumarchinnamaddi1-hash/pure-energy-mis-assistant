@@ -1,0 +1,93 @@
+
+.app-header {
+  width: 100%;
+  min-height: 72px;
+  padding: 12px 28px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-logo {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: #087443;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.header-title h2 {
+  margin: 0;
+  color: #173b2b;
+  font-size: 19px;
+}
+
+.header-title span {
+  display: block;
+  margin-top: 3px;
+  color: #667085;
+  font-size: 12px;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-nav a {
+  padding: 10px 16px;
+  border-radius: 7px;
+  color: #475467;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.header-nav a:hover {
+  background: #ecfdf3;
+  color: #087443;
+}
+
+.header-nav a.active {
+  background: #087443;
+  color: #ffffff;
+}
+
+@media (max-width: 520px) {
+  .app-header {
+    padding: 12px 14px;
+    flex-wrap: wrap;
+  }
+
+  .header-title h2 {
+    font-size: 16px;
+  }
+
+  .header-nav {
+    width: 100%;
+  }
+
+  .header-nav a {
+    flex: 1;
+    text-align: center;
+    padding: 10px 8px;
+  }
+}
