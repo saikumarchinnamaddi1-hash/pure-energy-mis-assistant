@@ -84,22 +84,8 @@ export default function LeadForm({ onCreated }: Props) {
       <section className="lead-form-container">
         <div className="lead-card-heading">
           <div className="lead-card-icon" aria-hidden="true">
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.8"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <circle cx="9" cy="8" r="4" />
-              <path d="M3 21v-2a6 6 0 0 1 6-6h1" />
-              <path d="M19 14v6M16 17h6" />
-            </svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"> <circle cx="9" cy="8" r="4" /><path d="M3 21v-2a6 6 0 0 1 6-6h1" /><path d="M19 14v6M16 17h6" /></svg>
           </div>
-
           <div>
             <h2>Customer Information</h2>
             <p>Fields marked with * are required.</p>
@@ -112,34 +98,14 @@ export default function LeadForm({ onCreated }: Props) {
               <label htmlFor="lead-name">
                 Customer Name <span>*</span>
               </label>
-              <input
-                id="lead-name"
-                name="name"
-                value={form.name}
-                onChange={handleChange}
-                placeholder="Enter customer name"
-                autoComplete="name"
-                maxLength={100}
-                required
-              />
+              <input id="lead-name" name="name" value={form.name} onChange={handleChange} placeholder="Enter customer name" autoComplete="name" maxLength={100} required />
             </div>
 
             <div className="form-group">
               <label htmlFor="lead-mobile">
                 Mobile Number <span>*</span>
               </label>
-              <input
-                id="lead-mobile"
-                name="mobile"
-                type="tel"
-                value={form.mobile}
-                onChange={handleChange}
-                placeholder="Enter 10-digit mobile number"
-                inputMode="numeric"
-                autoComplete="tel-national"
-                maxLength={10}
-                required
-              />
+              <input id="lead-mobile" name="mobile" type="tel" value={form.mobile} onChange={handleChange} placeholder="Enter 10-digit mobile number" inputMode="numeric" autoComplete="tel-national" maxLength={10} required />
               <small>Enter a valid Indian mobile number.</small>
             </div>
 
@@ -147,30 +113,14 @@ export default function LeadForm({ onCreated }: Props) {
               <label htmlFor="lead-pincode">
                 Pincode <span>*</span>
               </label>
-              <input
-                id="lead-pincode"
-                name="pincode"
-                value={form.pincode}
-                onChange={handleChange}
-                placeholder="Enter 6-digit pincode"
-                inputMode="numeric"
-                autoComplete="postal-code"
-                maxLength={6}
-                required
-              />
+              <input id="lead-pincode" name="pincode" value={form.pincode} onChange={handleChange} placeholder="Enter 6-digit pincode" inputMode="numeric" autoComplete="postal-code" maxLength={6} required />
             </div>
 
             <div className="form-group">
               <label htmlFor="lead-product">
                 Product <span>*</span>
               </label>
-              <select
-                id="lead-product"
-                name="product"
-                value={form.product}
-                onChange={handleChange}
-                required
-              >
+              <select id="lead-product" name="product" value={form.product} onChange={handleChange} required>
                 <option value="">Select product</option>
                 <option value="Solar Panel">Solar Panel</option>
                 <option value="Inverter">Inverter</option>
@@ -181,12 +131,7 @@ export default function LeadForm({ onCreated }: Props) {
 
             <div className="form-group lead-source-group">
               <label htmlFor="lead-source">Lead Source</label>
-              <select
-                id="lead-source"
-                name="source"
-                value={form.source}
-                onChange={handleChange}
-              >
+              <select id="lead-source" name="source" value={form.source} onChange={handleChange}>
                 <option value="Website">Website</option>
                 <option value="Phone">Phone</option>
                 <option value="Referral">Referral</option>
@@ -196,10 +141,7 @@ export default function LeadForm({ onCreated }: Props) {
           </div>
 
           {message && (
-            <div
-              className={`lead-form-message ${messageType}`}
-              role={messageType === "error" ? "alert" : "status"}
-            >
+            <div className={`lead-form-message ${messageType}`} role={messageType === "error" ? "alert" : "status"}>
               <span>{message}</span>
             </div>
           )}

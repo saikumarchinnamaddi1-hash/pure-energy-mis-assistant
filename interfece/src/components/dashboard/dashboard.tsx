@@ -1,24 +1,8 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
-import {
-  getLeads,
-  updateLeadStatus,
-  deleteLead,
-  type Lead,
-} from "../../api";
+import { getLeads, updateLeadStatus, deleteLead, type Lead, } from "../../api";
 import ImportButton from "../import-button";
-import {
-  ResponsiveContainer,
-  AreaChart,
-  Area,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  PieChart,
-  Pie,
-  Cell,
-} from "recharts";
+import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, PieChart, Pie, Cell, } from "recharts";
 import "./dashboard.css";
 
 const STATUS_COLORS: Record<string, string> = {
@@ -179,7 +163,7 @@ export default function Dashboard() {
 
   return (
     <main className="dashboard">
-      
+
 
       <section className="page-heading" id="dashboard">
         <div>
@@ -188,13 +172,7 @@ export default function Dashboard() {
           <p>Track, assign, and manage your sales leads.</p>
         </div>
 
-        <button
-          className="primary-btn"
-          type="button"
-          onClick={() =>
-            document.getElementById("lead-search")?.focus()
-          }
-        >
+        <button className="primary-btn" type="button" onClick={() => document.getElementById("lead-search")?.focus()}>
           + Find Leads
         </button>
       </section>
@@ -267,52 +245,19 @@ export default function Dashboard() {
 
           <div className="chart-area">
             <ResponsiveContainer width="100%" height="100%">
-              <AreaChart
-                data={monthlyLeadData}
-                margin={{ top: 12, right: 12, left: -18, bottom: 0 }}
-              >
+              <AreaChart data={monthlyLeadData} margin={{ top: 12, right: 12, left: -18, bottom: 0 }}>
                 <defs>
-                  <linearGradient
-                    id="leadGradient"
-                    x1="0"
-                    y1="0"
-                    x2="0"
-                    y2="1"
-                  >
+                  <linearGradient id="leadGradient" x1="0" y1="0" x2="0" y2="1" >
                     <stop offset="0%" stopColor="#07804b" stopOpacity={0.28} />
                     <stop offset="95%" stopColor="#07804b" stopOpacity={0.02} />
                   </linearGradient>
                 </defs>
 
                 <CartesianGrid stroke="#e8edf0" strokeDasharray="3 3" />
-                <XAxis
-                  dataKey="month"
-                  tick={{ fill: "#718096", fontSize: 12 }}
-                  axisLine={false}
-                  tickLine={false}
-                />
-                <YAxis
-                  allowDecimals={false}
-                  tick={{ fill: "#718096", fontSize: 12 }}
-                  axisLine={false}
-                  tickLine={false}
-                />
-                <Tooltip
-                  contentStyle={{
-                    borderRadius: 10,
-                    border: "1px solid #e2e8ef",
-                  }}
-                  formatter={(value) => [value, "Leads"]}
-                />
-                <Area
-                  type="monotone"
-                  dataKey="count"
-                  name="Leads"
-                  stroke="#07804b"
-                  strokeWidth={3}
-                  fill="url(#leadGradient)"
-                  activeDot={{ r: 5 }}
-                />
+                <XAxis dataKey="month" tick={{ fill: "#718096", fontSize: 12 }} axisLine={false} tickLine={false} />
+                <YAxis allowDecimals={false} tick={{ fill: "#718096", fontSize: 12 }} axisLine={false} tickLine={false} />
+                <Tooltip contentStyle={{ borderRadius: 10, border: "1px solid #e2e8ef", }} formatter={(value) => [value, "Leads"]} />
+                <Area type="monotone" dataKey="count" name="Leads" stroke="#07804b" strokeWidth={3} fill="url(#leadGradient)" activeDot={{ r: 5 }} />
               </AreaChart>
             </ResponsiveContainer>
           </div>
@@ -329,16 +274,7 @@ export default function Dashboard() {
           <div className="pie-chart-area">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
-                <Pie
-                  data={statusChartData}
-                  dataKey="value"
-                  nameKey="name"
-                  cx="50%"
-                  cy="50%"
-                  innerRadius={58}
-                  outerRadius={85}
-                  paddingAngle={3}
-                >
+                <Pie data={statusChartData} dataKey="value" nameKey="name" cx="50%" cy="50%" innerRadius={58} outerRadius={85} paddingAngle={3}>
                   {statusChartData.map((item) => (
                     <Cell key={item.name} fill={item.color} />
                   ))}
@@ -356,10 +292,7 @@ export default function Dashboard() {
           <div className="chart-legend">
             {statusChartData.map((item) => (
               <div className="legend-item" key={item.name}>
-                <span
-                  className="legend-dot"
-                  style={{ backgroundColor: item.color }}
-                />
+                <span className="legend-dot" style={{ backgroundColor: item.color }} />
                 <span>{item.name}</span>
                 <strong>{item.value}</strong>
               </div>
@@ -401,35 +334,15 @@ export default function Dashboard() {
             <p>Manage and track your customer enquiries.</p>
           </div>
 
-          <button
-            className="outline-btn"
-            type="button"
-            onClick={() => void loadLeads()}
-          >
+          <button className="outline-btn" type="button" onClick={() => void loadLeads()}>
             ↻ Refresh
           </button>
         </div>
 
         <div className="table-toolbar">
-          <input
-            id="lead-search"
-            type="search"
-            placeholder="Search name, mobile, pincode, dealer..."
-            value={search}
-            onChange={(event) => {
-              setSearch(event.target.value);
-              setCurrentPage(1);
-            }}
-          />
+          <input id="lead-search" type="search" placeholder="Search name, mobile, pincode, dealer..." value={search} onChange={(event) => { setSearch(event.target.value); setCurrentPage(1); }} />
 
-          <select
-            aria-label="Filter leads by status"
-            value={statusFilter}
-            onChange={(event) => {
-              setStatusFilter(event.target.value);
-              setCurrentPage(1);
-            }}
-          >
+          <select aria-label="Filter leads by status" value={statusFilter} onChange={(event) => { setStatusFilter(event.target.value); setCurrentPage(1); }}>
             <option value="All">All statuses</option>
             <option value="New">New</option>
             <option value="Contacted">Contacted</option>
@@ -476,25 +389,11 @@ export default function Dashboard() {
                       <td>{lead.dealer || "In-house Sales"}</td>
 
                       <td>
-                        <span
-                          className={`status-badge status-${(
-                            lead.status || "New"
-                          ).toLowerCase()}`}
-                        >
+                        <span className={`status-badge status-${(lead.status || "New").toLowerCase()}`}>
                           {lead.status || "New"}
                         </span>
 
-                        <select
-                          className="status-select"
-                          aria-label={`Update status for ${lead.name}`}
-                          value={lead.status || "New"}
-                          onChange={(event) =>
-                            void handleStatusChange(
-                              lead.id,
-                              event.target.value as Lead["status"]
-                            )
-                          }
-                        >
+                        <select className="status-select" aria-label={`Update status for ${lead.name}`} value={lead.status || "New"} onChange={(event) => void handleStatusChange(lead.id, event.target.value as Lead["status"])}>
                           <option value="New">New</option>
                           <option value="Contacted">Contacted</option>
                           <option value="Converted">Converted</option>
@@ -503,11 +402,7 @@ export default function Dashboard() {
                       </td>
 
                       <td>
-                        <button
-                          className="delete-btn"
-                          type="button"
-                          onClick={() => void handleDeleteLead(lead.id)}
-                        >
+                        <button className="delete-btn" type="button" onClick={() => void handleDeleteLead(lead.id)}>
                           Delete
                         </button>
                       </td>
@@ -525,13 +420,7 @@ export default function Dashboard() {
               </span>
 
               <div className="pagination">
-                <button
-                  type="button"
-                  disabled={safePage <= 1}
-                  onClick={() =>
-                    setCurrentPage((page) => Math.max(1, page - 1))
-                  }
-                >
+                <button type="button" disabled={safePage <= 1} onClick={() => setCurrentPage((page) => Math.max(1, page - 1))}>
                   Previous
                 </button>
 
@@ -539,15 +428,7 @@ export default function Dashboard() {
                   Page {safePage} of {Math.max(totalPages, 1)}
                 </span>
 
-                <button
-                  type="button"
-                  disabled={safePage >= totalPages}
-                  onClick={() =>
-                    setCurrentPage((page) =>
-                      Math.min(Math.max(totalPages, 1), page + 1)
-                    )
-                  }
-                >
+                <button type="button" disabled={safePage >= totalPages} onClick={() => setCurrentPage((page) => Math.min(Math.max(totalPages, 1), page + 1))}>
                   Next
                 </button>
               </div>
